@@ -1,0 +1,1357 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Discover why education is one of the most powerful tools for personal growth, career success and societal progress.">
+<title>EduRise — The Power of Education</title>
+
+<style>
+/* =========================
+   RESET & VARIABLES
+========================= */
+:root {
+    --bg: #07111f;
+    --bg-soft: #0c1b2e;
+    --card: rgba(255,255,255,0.065);
+    --card-border: rgba(255,255,255,0.11);
+    --text: #f5f8ff;
+    --muted: #aebbd0;
+    --primary: #65d6ff;
+    --secondary: #8b7cff;
+    --accent: #62f5b0;
+    --max: 1180px;
+    --shadow: 0 25px 70px rgba(0,0,0,.28);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+html {
+    scroll-padding-top: 90px;
+}
+
+body {
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+                 BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background:
+        radial-gradient(circle at 10% 10%, rgba(101,214,255,.12), transparent 28%),
+        radial-gradient(circle at 90% 20%, rgba(139,124,255,.13), transparent 30%),
+        var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Texture */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: .20;
+    z-index: -1;
+    background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+    background-size: 35px 35px;
+}
+
+/* =========================
+   GENERAL
+========================= */
+
+.container {
+    width: min(92%, var(--max));
+    margin: auto;
+}
+
+section {
+    padding: 100px 0;
+}
+
+.section-label {
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: .75rem;
+    font-weight: 800;
+    margin-bottom: 14px;
+}
+
+.section-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.08;
+    max-width: 760px;
+    margin-bottom: 20px;
+}
+
+.section-text {
+    color: var(--muted);
+    max-width: 720px;
+    font-size: 1.05rem;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 18px 0;
+    transition: .3s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(7,17,31,.84);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--card-border);
+}
+
+.nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    color: white;
+    text-decoration: none;
+    font-size: 1.35rem;
+    font-weight: 900;
+    letter-spacing: -.5px;
+}
+
+.logo span {
+    color: var(--primary);
+}
+
+.nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #d8e2f2;
+    text-decoration: none;
+    font-size: .92rem;
+    font-weight: 600;
+    transition: .25s;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.menu-btn {
+    display: none;
+    background: none;
+    border: 0;
+    color: white;
+    font-size: 1.7rem;
+    cursor: pointer;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 120px;
+    position: relative;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 13px;
+    border: 1px solid rgba(101,214,255,.25);
+    background: rgba(101,214,255,.07);
+    border-radius: 100px;
+    color: var(--primary);
+    font-size: .78rem;
+    font-weight: 800;
+    margin-bottom: 22px;
+}
+
+.badge-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 15px var(--accent);
+}
+
+.hero h1 {
+    font-size: clamp(3.2rem, 7vw, 6.7rem);
+    line-height: .94;
+    letter-spacing: -5px;
+    margin-bottom: 25px;
+}
+
+.gradient-text {
+    background: linear-gradient(100deg, #fff, var(--primary), #9e91ff);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero-description {
+    color: var(--muted);
+    max-width: 650px;
+    font-size: 1.12rem;
+    margin-bottom: 32px;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+}
+
+.btn {
+    border: 0;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 20px;
+    border-radius: 12px;
+    font-weight: 800;
+    transition: .25s;
+}
+
+.btn-primary {
+    color: #04111b;
+    background: var(--primary);
+    box-shadow: 0 10px 35px rgba(101,214,255,.2);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(101,214,255,.3);
+}
+
+.btn-outline {
+    color: white;
+    background: rgba(255,255,255,.05);
+    border: 1px solid var(--card-border);
+}
+
+.btn-outline:hover {
+    background: rgba(255,255,255,.09);
+}
+
+/* Hero visual */
+.hero-visual {
+    position: relative;
+    min-height: 440px;
+}
+
+.orbit {
+    position: absolute;
+    inset: 30px;
+    border: 1px solid rgba(101,214,255,.18);
+    border-radius: 50%;
+    animation: rotate 18s linear infinite;
+}
+
+.orbit::before,
+.orbit::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: var(--primary);
+    border-radius: 50%;
+    box-shadow: 0 0 25px var(--primary);
+}
+
+.orbit::before {
+    top: 8%;
+    left: 18%;
+}
+
+.orbit::after {
+    bottom: 10%;
+    right: 12%;
+    background: var(--accent);
+    box-shadow: 0 0 25px var(--accent);
+}
+
+@keyframes rotate {
+    to { transform: rotate(360deg); }
+}
+
+.glass-card {
+    position: absolute;
+    background: rgba(13,29,49,.78);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(18px);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+}
+
+.main-visual {
+    inset: 80px 50px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.book-icon {
+    font-size: 5rem;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 20px rgba(101,214,255,.4));
+}
+
+.main-visual h3 {
+    font-size: 1.7rem;
+}
+
+.main-visual p {
+    color: var(--muted);
+    max-width: 270px;
+}
+
+.float-card {
+    padding: 16px 19px;
+    animation: float 4s ease-in-out infinite;
+}
+
+.float-card.one {
+    top: 30px;
+    right: 0;
+}
+
+.float-card.two {
+    bottom: 20px;
+    left: 0;
+    animation-delay: 1.3s;
+}
+
+.float-card strong {
+    display: block;
+    font-size: 1.4rem;
+}
+
+.float-card span {
+    color: var(--muted);
+    font-size: .78rem;
+}
+
+@keyframes float {
+    50% { transform: translateY(-12px); }
+}
+
+/* =========================
+   STATS
+========================= */
+
+.stats {
+    padding: 25px 0;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    overflow: hidden;
+    background: rgba(255,255,255,.025);
+}
+
+.stat {
+    padding: 28px;
+    text-align: center;
+    border-right: 1px solid var(--card-border);
+}
+
+.stat:last-child {
+    border-right: 0;
+}
+
+.stat-number {
+    font-size: 2.1rem;
+    font-weight: 900;
+    color: var(--primary);
+}
+
+.stat p {
+    color: var(--muted);
+    font-size: .85rem;
+}
+
+/* =========================
+   IMPORTANCE CARDS
+========================= */
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 45px;
+}
+
+.card {
+    padding: 30px;
+    border: 1px solid var(--card-border);
+    border-radius: 22px;
+    background: var(--card);
+    transition: .3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.card::after {
+    content: "";
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: var(--primary);
+    opacity: .05;
+    right: -50px;
+    top: -50px;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(101,214,255,.35);
+    background: rgba(255,255,255,.085);
+}
+
+.icon {
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    border-radius: 15px;
+    background: rgba(101,214,255,.1);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.card p {
+    color: var(--muted);
+    font-size: .92rem;
+}
+
+/* =========================
+   FEATURE SECTION
+========================= */
+
+.feature {
+    background:
+        linear-gradient(90deg, rgba(101,214,255,.035), transparent),
+        rgba(255,255,255,.015);
+    border-top: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.feature-box {
+    border: 1px solid var(--card-border);
+    border-radius: 25px;
+    padding: 30px;
+    background: var(--card);
+}
+
+.feature-box h3 {
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+}
+
+.feature-box p {
+    color: var(--muted);
+}
+
+.check-list {
+    margin-top: 25px;
+    display: grid;
+    gap: 13px;
+}
+
+.check {
+    display: flex;
+    gap: 12px;
+    color: #dce7f5;
+}
+
+.check span {
+    color: var(--accent);
+    font-weight: 900;
+}
+
+/* =========================
+   JOURNEY
+========================= */
+
+.timeline {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.step {
+    padding: 25px;
+    border-left: 2px solid var(--primary);
+    background: rgba(255,255,255,.035);
+    border-radius: 0 16px 16px 0;
+}
+
+.step-number {
+    color: var(--primary);
+    font-weight: 900;
+    font-size: .8rem;
+    margin-bottom: 10px;
+}
+
+.step h3 {
+    margin-bottom: 8px;
+}
+
+.step p {
+    color: var(--muted);
+    font-size: .9rem;
+}
+
+/* =========================
+   QUOTE
+========================= */
+
+.quote-section {
+    text-align: center;
+}
+
+.quote {
+    max-width: 900px;
+    margin: auto;
+    font-size: clamp(1.8rem, 4vw, 3.2rem);
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.quote-mark {
+    color: var(--primary);
+}
+
+/* =========================
+   QUIZ
+========================= */
+
+.quiz {
+    max-width: 760px;
+    margin: 45px auto 0;
+    padding: 32px;
+    border-radius: 25px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+}
+
+.quiz-question {
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-bottom: 22px;
+}
+
+.options {
+    display: grid;
+    gap: 10px;
+}
+
+.option {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid var(--card-border);
+    background: rgba(255,255,255,.035);
+    color: white;
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: left;
+    transition: .2s;
+}
+
+.option:hover {
+    border-color: var(--primary);
+    background: rgba(101,214,255,.08);
+}
+
+.quiz-result {
+    margin-top: 20px;
+    color: var(--accent);
+    font-weight: 800;
+    min-height: 25px;
+}
+
+/* =========================
+   CTA
+========================= */
+
+.cta {
+    text-align: center;
+}
+
+.cta-box {
+    padding: 70px 30px;
+    border-radius: 30px;
+    border: 1px solid rgba(101,214,255,.2);
+    background:
+        radial-gradient(circle at center, rgba(101,214,255,.1), transparent 55%),
+        rgba(255,255,255,.035);
+}
+
+.cta-box h2 {
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    margin-bottom: 15px;
+}
+
+.cta-box p {
+    color: var(--muted);
+    max-width: 650px;
+    margin: 0 auto 28px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 35px 0;
+    border-top: 1px solid var(--card-border);
+    color: var(--muted);
+    font-size: .85rem;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.footer-logo {
+    color: white;
+    font-weight: 900;
+}
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity .7s ease, transform .7s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+    .hero-grid,
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-visual {
+        min-height: 400px;
+    }
+
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .timeline {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat:nth-child(2) {
+        border-right: 0;
+    }
+
+    .stat:nth-child(-n+2) {
+        border-bottom: 1px solid var(--card-border);
+    }
+}
+
+@media (max-width: 650px) {
+    section {
+        padding: 75px 0;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 70px;
+        left: 4%;
+        right: 4%;
+        display: none;
+        flex-direction: column;
+        padding: 20px;
+        border-radius: 16px;
+        background: rgba(7,17,31,.97);
+        border: 1px solid var(--card-border);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .hero h1 {
+        letter-spacing: -2px;
+    }
+
+    .cards-grid,
+    .timeline,
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat {
+        border-right: 0;
+        border-bottom: 1px solid var(--card-border);
+    }
+
+    .stat:last-child {
+        border-bottom: 0;
+    }
+
+    .main-visual {
+        inset: 70px 20px 50px;
+    }
+
+    .float-card.one {
+        right: 5px;
+    }
+
+    .float-card.two {
+        left: 5px;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+    }
+}
+
+/* Accessibility */
+:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 3px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<header class="navbar" id="navbar">
+    <div class="container nav-inner">
+        <a href="#home" class="logo">Edu<span>Rise</span></a>
+
+        <button class="menu-btn" id="menuBtn"
+                aria-label="Open navigation menu">
+            ☰
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#importance">Importance</a></li>
+            <li><a href="#impact">Impact</a></li>
+            <li><a href="#journey">Journey</a></li>
+            <li><a href="#quiz">Quiz</a></li>
+        </ul>
+    </div>
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<main id="home">
+
+<section class="hero">
+    <div class="container hero-grid">
+
+        <div class="reveal">
+            <div class="badge">
+                <span class="badge-dot"></span>
+                THE POWER OF LEARNING
+            </div>
+
+            <h1>
+                Education
+                <span class="gradient-text">changes everything.</span>
+            </h1>
+
+            <p class="hero-description">
+                Education is one of the most powerful tools for personal
+                growth, career success, innovation and positive societal
+                progress.
+            </p>
+
+            <div class="buttons">
+                <a href="#importance" class="btn btn-primary">
+                    Explore the impact →
+                </a>
+
+                <a href="#quiz" class="btn btn-outline">
+                    Test your knowledge
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-visual reveal">
+
+            <div class="orbit"></div>
+
+            <div class="glass-card main-visual">
+                <div class="book-icon">📚</div>
+                <h3>Knowledge → Opportunity</h3>
+                <p>
+                    Learning gives people the tools to understand,
+                    create, solve and contribute.
+                </p>
+            </div>
+
+            <div class="glass-card float-card one">
+                <strong>01</strong>
+                <span>Personal Growth</span>
+            </div>
+
+            <div class="glass-card float-card two">
+                <strong>∞</strong>
+                <span>Possibilities</span>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- =========================
+     STATS
+========================= -->
+
+<section class="stats">
+    <div class="container">
+        <div class="stats-grid reveal">
+
+            <div class="stat">
+                <div class="stat-number">01</div>
+                <p>Builds essential skills</p>
+            </div>
+
+            <div class="stat">
+                <div class="stat-number">02</div>
+                <p>Creates opportunities</p>
+            </div>
+
+            <div class="stat">
+                <div class="stat-number">03</div>
+                <p>Strengthens communities</p>
+            </div>
+
+            <div class="stat">
+                <div class="stat-number">04</div>
+                <p>Drives innovation</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================
+     IMPORTANCE
+========================= -->
+
+<section id="importance">
+    <div class="container">
+
+        <div class="reveal">
+            <div class="section-label">Why it matters</div>
+
+            <h2 class="section-title">
+                Education creates possibilities at every level.
+            </h2>
+
+            <p class="section-text">
+                Its value extends beyond classrooms. Education can influence
+                how people think, work, communicate, participate in society
+                and solve problems.
+            </p>
+        </div>
+
+        <div class="cards-grid">
+
+            <article class="card reveal">
+                <div class="icon">🧠</div>
+                <h3>Critical Thinking</h3>
+                <p>
+                    Education develops the ability to analyze information,
+                    question ideas, solve problems and make thoughtful
+                    decisions.
+                </p>
+            </article>
+
+            <article class="card reveal">
+                <div class="icon">💼</div>
+                <h3>Career Success</h3>
+                <p>
+                    Learning develops knowledge and skills that can open
+                    pathways to different careers and professional
+                    opportunities.
+                </p>
+            </article>
+
+            <article class="card reveal">
+                <div class="icon">💡</div>
+                <h3>Innovation</h3>
+                <p>
+                    Education supports discoveries and new ideas in science,
+                    technology, medicine and many other fields.
+                </p>
+            </article>
+
+            <article class="card reveal">
+                <div class="icon">🌍</div>
+                <h3>Social Awareness</h3>
+                <p>
+                    Exposure to different perspectives can encourage empathy,
+                    tolerance and a deeper understanding of global issues.
+                </p>
+            </article>
+
+            <article class="card reveal">
+                <div class="icon">📈</div>
+                <h3>Economic Growth</h3>
+                <p>
+                    Education can improve skills and productivity, supporting
+                    individuals, families and wider economies.
+                </p>
+            </article>
+
+            <article class="card reveal">
+                <div class="icon">🤝</div>
+                <h3>Better Communities</h3>
+                <p>
+                    Educated communities can develop stronger participation,
+                    communication and problem-solving capacity.
+                </p>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- =========================
+     PERSONAL + SOCIAL IMPACT
+========================= -->
+
+<section class="feature" id="impact">
+
+    <div class="container feature-grid">
+
+        <div class="reveal">
+            <div class="section-label">The bigger picture</div>
+
+            <h2 class="section-title">
+                From one learner to an entire society.
+            </h2>
+
+            <p class="section-text">
+                Education can create effects that extend far beyond one
+                person's classroom experience.
+            </p>
+        </div>
+
+        <div class="feature-box reveal">
+
+            <h3>Education empowers people to...</h3>
+
+            <p>
+                Build knowledge, develop practical abilities and participate
+                meaningfully in their communities and economies.
+            </p>
+
+            <div class="check-list">
+
+                <div class="check">
+                    <span>✓</span>
+                    <p>Think critically and solve everyday problems.</p>
+                </div>
+
+                <div class="check">
+                    <span>✓</span>
+                    <p>Communicate ideas clearly and confidently.</p>
+                </div>
+
+                <div class="check">
+                    <span>✓</span>
+                    <p>Explore career and learning opportunities.</p>
+                </div>
+
+                <div class="check">
+                    <span>✓</span>
+                    <p>Understand different people and perspectives.</p>
+                </div>
+
+                <div class="check">
+                    <span>✓</span>
+                    <p>Contribute to innovation and community progress.</p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     JOURNEY
+========================= -->
+
+<section id="journey">
+
+    <div class="container">
+
+        <div class="reveal">
+            <div class="section-label">The learning journey</div>
+
+            <h2 class="section-title">
+                Knowledge becomes powerful when it is applied.
+            </h2>
+        </div>
+
+        <div class="timeline">
+
+            <div class="step reveal">
+                <div class="step-number">STEP 01</div>
+                <h3>Learn</h3>
+                <p>
+                    Discover facts, ideas, skills and new perspectives.
+                </p>
+            </div>
+
+            <div class="step reveal">
+                <div class="step-number">STEP 02</div>
+                <h3>Think</h3>
+                <p>
+                    Question information and connect different ideas.
+                </p>
+            </div>
+
+            <div class="step reveal">
+                <div class="step-number">STEP 03</div>
+                <h3>Create</h3>
+                <p>
+                    Use knowledge to solve problems and develop new ideas.
+                </p>
+            </div>
+
+            <div class="step reveal">
+                <div class="step-number">STEP 04</div>
+                <h3>Contribute</h3>
+                <p>
+                    Apply what you know to help yourself and your community.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     QUOTE
+========================= -->
+
+<section class="quote-section">
+
+    <div class="container reveal">
+
+        <p class="quote">
+            <span class="quote-mark">“</span>
+            Education helps people reach their potential and gives them
+            more tools to shape the future.
+            <span class="quote-mark">”</span>
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     QUIZ
+========================= -->
+
+<section id="quiz">
+
+    <div class="container">
+
+        <div class="reveal">
+            <div class="section-label">Interactive learning</div>
+
+            <h2 class="section-title">
+                Quick education quiz.
+            </h2>
+
+            <p class="section-text">
+                Check what you learned from this page.
+            </p>
+        </div>
+
+        <div class="quiz reveal">
+
+            <div class="quiz-question">
+                Which is one important benefit of education?
+            </div>
+
+            <div class="options">
+
+                <button class="option"
+                        data-correct="false">
+                    A. It prevents people from thinking independently
+                </button>
+
+                <button class="option"
+                        data-correct="true">
+                    B. It develops knowledge and problem-solving skills
+                </button>
+
+                <button class="option"
+                        data-correct="false">
+                    C. It removes the need to learn new things
+                </button>
+
+                <button class="option"
+                        data-correct="false">
+                    D. It only matters inside a classroom
+                </button>
+
+            </div>
+
+            <div class="quiz-result" id="quizResult"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FINAL CTA
+========================= -->
+
+<section class="cta">
+
+    <div class="container">
+
+        <div class="cta-box reveal">
+
+            <h2>Keep learning. Keep growing.</h2>
+
+            <p>
+                Education is not only about collecting information.
+                It is about developing the ability to understand,
+                question, create and contribute.
+            </p>
+
+            <a href="#home" class="btn btn-primary">
+                Back to top ↑
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="container footer-inner">
+
+        <div>
+            <span class="footer-logo">EduRise</span>
+            <span> — The Power of Education</span>
+        </div>
+
+        <div>
+            © <span id="year"></span> EduRise
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+/* =========================
+   MOBILE MENU
+========================= */
+
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+
+    const isOpen = navLinks.classList.contains("active");
+    menuBtn.setAttribute("aria-expanded", isOpen);
+});
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+        menuBtn.setAttribute("aria-expanded", "false");
+    });
+});
+
+
+/* =========================
+   NAVBAR SCROLL EFFECT
+========================= */
+
+const navbar = document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 30) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+    }
+});
+
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+const revealElements = document.querySelectorAll(".reveal");
+
+const observer = new IntersectionObserver(
+    (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+                observer.unobserve(entry.target);
+            }
+        });
+    },
+    {
+        threshold: 0.12
+    }
+);
+
+revealElements.forEach(element => {
+    observer.observe(element);
+});
+
+
+/* =========================
+   QUIZ
+========================= */
+
+const options = document.querySelectorAll(".option");
+const quizResult = document.getElementById("quizResult");
+
+options.forEach(option => {
+
+    option.addEventListener("click", () => {
+
+        options.forEach(item => {
+            item.disabled = true;
+            item.style.cursor = "default";
+        });
+
+        if (option.dataset.correct === "true") {
+            quizResult.textContent =
+                "✓ Correct! Education develops knowledge and problem-solving skills.";
+        } else {
+            quizResult.textContent =
+                "Not quite. Education develops knowledge, skills and problem-solving abilities.";
+        }
+
+    });
+
+});
+
+
+/* =========================
+   CURRENT YEAR
+========================= */
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+</script>
+
+</body>
+</html>
+```
